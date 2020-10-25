@@ -1,0 +1,25 @@
+<h4><{$smarty.const._AM_MANAGE_LANGUAGES}></h4>
+<table class="outer" cellspacing="1" cellpadding="4" width="100%">
+<tr>
+<th scope="col"><{$smarty.const._AM_ID}></th>
+<th scope="col"><{$smarty.const._AM_LANGUAGE}></th>
+<th scope="col"><{$smarty.const._AM_ACTIONS}></th>
+</tr>
+<{foreach name=languages from=$languages item=language}>
+<tr class="<{cycle name=rows values="even,odd"}>">
+<td><{$language->getVar('id')}></td>
+<td><{$language->getVar('name')}></td>
+<td><a href="index.php?op=languagemanager_editlanguage&id=<{$language->getVar('id')}>&name=<{$language->getVar('name')}>"><img src="../../../images/icons/edit.gif"></a> 
+<a href="index.php?op=languagemanager_deletelanguage&id=<{$language->getVar('id')}>"><img src="../../../images/icons/delete.gif"></a></td>
+</tr>
+<{/foreach}> 
+<form name="addForm" method="post" action="index.php">
+<input type="hidden" name="op" value="languagemanager_addlanguage">
+<tr class="<{cycle name=rows values="even,odd"}>">
+<td>&nbsp;</td>
+<td><input type="text" name="language_name" value=""></td>
+<td><input type="submit" value="<{$smarty.const._AM_ADD}>"></td>
+</tr> 
+</form>
+</table>
+<p align="center"><a href="index.php"><{$smarty.const._AM_BACK}></a></p>
